@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CarSharing Barking a Firenze</title>
+	<!--  Font resources -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+	<!--  JQuery resources -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+	<!--  BootStrap 4 resources -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js" ></script>
+
+	<!--  map resources -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+	  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+	  crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+	  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+	  crossorigin=""></script>
+
+	<!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@2.3.0/dist/esri-leaflet.js"
+  integrity="sha512-1tScwpjXwwnm6tTva0l0/ZgM3rYNbdyMj5q6RSQMbNX6EUMhYDE3pMRGZaT41zHEvLoWEK7qFEJmZDOoDMU7/Q=="
+  crossorigin=""></script>
+
+	<!-- Load Esri Leaflet Geocoder from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.14/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-v5YmWLm8KqAAmg5808pETiccEohtt8rPVMGQ1jA6jqkWVydV5Cuz3nJ9fQ7ittSxvuqsvI9RSGfVoKPaAJZ/AQ=="
+    crossorigin="">
+  <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.14/dist/esri-leaflet-geocoder.js"
+    integrity="sha512-uK5jVwR81KVTGe8KpJa1QIN4n60TsSV8+DPbL5wWlYQvb0/nYNgSOg9dZG6ViQhwx/gaMszuWllTemL+K+IXjg=="
+    crossorigin=""></script>
+
+	<!-- routing resources -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<!--  personalized resources -->
+	<script src="https://cdn.jsdelivr.net/npm/graphhopper-js-api-client/dist/graphhopper-client.js"></script>
+	<script src="js/lrm-graphhopper.js"></script>
+	<link href="css/carsharing.css" rel="stylesheet">
+	<script src="js/carSharingJS.js" ></script>
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+
+<body>
+	<!--  FIRST section of the page -->
+
+	   <header class="row">
+			<div class="logo col-4 center-block text-right">
+				<a class="linklogo" href="main.html"> <i class=" fas fa-car "></i></a></div>
+
+			<div class="col-8 logoTittle center-block">
+				<a class="linklogo" href="main.html"> <P >POSTI RISERVATI A CAR SHARING <br>COMUNE DI FIRENZE </P>
+					</a>
+			</div>
+
+		</header>
+		<!--  Second section of the page -->
+
+		<nav class="row navbar navbar-expand-lg sticky-top ">
+
+
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent"
+				aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-center text-center" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-4  nav-fill w-100 ">
+
+				<li class="nav-item ">
+					<a class="nav-link " href="main.html">HOME</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="About.html">ABOUT</a>
+
+				</li>
+     		</ul>
+   		</div>
+	    </nav>
+
+	<!--  Third section of the page -->
+	<div class="row description1">
+
+								<h4 class="titlemain ">
+									<b>Cerchi un posto per parcheggiare una macchina del servizio CarSharing a Firenze? </b> <br>
+								</h4>
+								<p class="mainP ">
+									Sei nel posto giusto! Vai nella sezione ABOUT per informazione.<br>
+
+								</p>
+
+	</div>
+	<div  class=" row buttons" >
+							<button id="tuttibtn" class="btn btn-outline-secondary ">TUTTI POSTI </button>
+
+							<button id="trovabtn" class="btn btn-outline-secondary ">MIA POSIZIONE</button>
+
+							<button id="cancelRoutingtbtn" class="btn btn-outline-secondary ">NASCONDI ROUTING</button>
+
+							<button id="switchbtn" class="btn btn-outline-secondary ">SATELLIET MAP</button>
+
+	</div>
+
+		<div id="map" class="row" ></div>
+
+			<footer class="row" >
+
+			 <div class="col-4 ">
+				 <div ><h5 class="footerHeaders">PARTICIPANTI</h5></div>
+
+				 <div class="row">
+					 <div class="col-lg-6 col-sm-12">
+						 <img class="imgFooter" src="images/universita.jpg" alt="logo università di firenze" >
+					 </div>
+					 <div class="col-lg-6 col-sm-12">
+						 <img class="imgFooter" src="images/comune.jpg" alt="logo comune di firenze">
+					 </div>
+
+
+
+				 </div>
+
+
+			 </div>
+			 <div class="col-4 ">
+				  <div> <h5 class="footerHeaders">CONTACTTI</h5></div>
+
+				 <div ><div class="wrapper1">
+
+					   <a  target="_blank" href=mailto:fatemah.mh@gmail.com? subject="information"><i class="fas  fa-2x fa-at"></i></a>
+					   <a  target="_blank" href="https://www.facebook.com/fatemah.alh"><i class="fab fa-2x fa-facebook"></i></a>
+					   <a target="_blank" href="https://www.linkedin.com/in/fatemah-alhamdoosh"><i class="fab fa-2x fa-linkedin"></i> </a>
+					</div></div>
+
+
+
+
+
+
+			 </div>
+
+			 <div class="col-4">
+				    <div > <h5 class="footerHeaders">INFO LINKS</h5></div>
+					 <ul class="listlink">
+					  <li >
+						<a class="itemlink" href="http://servizi.comune.fi.it/servizi/scheda-servizio/car-sharing-a-flusso-libero">CarSharing</a>
+					  </li>
+					  <li>
+						<a class="itemlink" href="https://www.facebook.com/cittadifirenzeufficiale/">Città di Firenze</a>
+					  </li>
+					  <li>
+						<a class="itemlink" href="https://www.comune.fi.it/pagina/privacy">Privacy</a>
+					  </li>
+					  <li>
+						<a  class="itemlink"href="https://opendata.comune.fi.it/?q=metarepo/datasetinfo&id=66de7a99-a435-45d7-8ad0-6a1caf88c943">Dati</a>
+					  </li>
+					</ul>
+
+
+			 </div>
+
+
+
+
+		</footer>
+
+
+
+
+
+
+</body>
+</html>
